@@ -1,7 +1,11 @@
 <script>
-  import Register from "./Register.svelte";
+  import Register from "./routes/Register.svelte";
+  import CreateProject from "./CreateProject.svelte";
+  import Home from "./routes/Home.svelte";
+  import Login from "./routes/Login.svelte";
 
   let menu = 0;
+
 </script>
 
 <main>
@@ -10,20 +14,27 @@
     Hello! This is our Volunteer Website.
   </p>
   <div>
-    <ul id="menu">
-      <li><a href="/" on:click|preventDefault={() => (menu = 1)}>Home</a></li> |
-      <li><a href="/" on:click|preventDefault={() => (menu = 2)}>Login</a></li> |
-      <li><a href="/" on:click|preventDefault={() => (menu = 3)}>Register</a></li>
-    </ul>
+    <nav>
+      <ul id="menu">
+        <li><a href="/" on:click|preventDefault={() => (menu = 1)}>Home</a></li> |
+        <li><a href="/login" on:click|preventDefault={() => (menu = 2)}>Login</a></li> |
+        <li><a href="/register" on:click|preventDefault={() => (menu = 3)}>Register</a></li>
+      </ul>
+    </nav>
   </div>
-
-  {#if menu === 3}
+  {#if menu === 1}
+    <Home />
+  {:else if menu === 2}
+    <Login />
+  {:else}
     <Register />
   {/if}
 </main>
 
+<CreateProject/>
+
 <style>
-  .p {
+  p {
 		border-radius: 5px;
 		background-color: #e9e9e9;
 		padding: 10px;
