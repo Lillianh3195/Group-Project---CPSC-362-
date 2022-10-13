@@ -1,5 +1,4 @@
 <script>
-  import * as api from 'shared/apis';
 
   let email, password;
   let errors = [], submitting, success;
